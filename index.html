@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+		<title>HD音乐盒</title>
+	</head>
+	<body>
+		<!-- 主页 -->
+		<div class="main">
+			<div class="top">
+				<div class="logo"></div>
+				<div class="top_title"></div>
+				<div class="top_search">
+					<input type="search" class="search" id="search" size="40" autofocus placeholder="Search here..." />
+					<button class="sbtn" id="sbtn">SEARCH</button>
+				</div>
+				<div class="top_tool">
+					<span class="win_min"></span>
+					<span class="win_close"></span>
+				</div>
+			</div>
+			<div class="song-list">
+				<table id="song-list">
+					<thead>
+						<tr><th width="230px">歌曲</th><th width="210px">歌手</th><th width="300px">专辑</th><th width="102px">下载</th></tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+			<div class="footer"></div>
+		</div>
+
+		<!-- 下载页 -->
+		<div id="down">
+			<table>
+				<tbody>
+					<tr><th class="lt"></th><td class="t"></td><th class="rt"></th></tr>
+					<tr><td class="l"></td>
+						<td class="downContent">
+							<div class="title">
+								<span>下载歌曲</span>
+								<a href="javascript:;" class="close"></a>
+							</div>
+							<div class="detail">
+								<img src="">
+								<div class="detail_content">
+									<dl>
+										<dt id="down_name"></dt>
+										<dd id="down_artist"></dd>
+										<dd id="down_album"></dd>
+									</dl>
+								</div>
+							</div>
+							<div style="clear:both;"></div>
+							<ul class="downSel"></ul>
+							<div class="btnDiv">
+								<a href="javascript:;" id="download"><span>立即下载<input id="fileDialog" type="file" nwsaveas=""/></span></a>
+							</div>
+						</td>
+						<td class="r"></td>
+					</tr>
+					<tr><th class="lb"></th><td class="b"></td><th class="rb"></th></tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="downbg"></div>
+	</body>
+</html>
