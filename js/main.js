@@ -87,9 +87,9 @@ $(function($) {
 					var li = $("<li id='file"+i+"'></li>");
 					if (i == 0) {
 						$('#fileDialog').attr('nwsaveas', song.songTitle + '.' + song.files[i].format);
-						li.append($("<input hidefocus='true' type='radio' name='song' id='radio"+i+"' data-format='"+song.files[i].format+"' checked>"));
+						li.append($("<input hidefocus='true' type='radio' name='song' id='radio"+i+"' data-format='"+song.files[i].format+"' data-rate='"+song.files[i].rate+"' checked>"));
 					} else {
-						li.append($("<input hidefocus='true' type='radio' name='song' id='radio"+i+"' data-format='"+song.files[i].format+"'>"));
+						li.append($("<input hidefocus='true' type='radio' name='song' id='radio"+i+"' data-format='"+song.files[i].format+"' data-rate='"+song.files[i].rate+"'>"));
 					}
 					li.append($("<label for='radio"+i+"'><span class='name'>"+song.files[i].ratetitle+"品质</span><span class='value'><b>"+song.files[i].size+"</b>( <span class='rate'>"+song.files[i].rate+"kbps</span> / "+song.files[i].format+" )</span></label>"));
 					dom.append(li);
@@ -107,11 +107,14 @@ $(function($) {
 	});
 
 	$('#download').click(function(){
+		if (localStorage.path) {
+			$('#fileDialog').attr('nwworkingdir', localStorage.path);
+		}
 		$('#fileDialog').change(function(){
 			var file = this.files[0];
-			song.rate = song.files[key].rate;
+			localStorage.path = file.path;
+			song.rate = $('input:radio[name="song"]:checked').data('rate');
 			music.download(song, function(data){
-				console.log(data);
 				if (data.ret) {
 					data = data.data;
 					if (data.files[0].url && file.path) {
