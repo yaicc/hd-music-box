@@ -112,9 +112,12 @@ $(function($) {
 		}
 		$('#fileDialog').change(function(){
 			var file = this.files[0];
+			if (!file) return;
 			localStorage.path = file.path;
 			song.rate = $('input:radio[name="song"]:checked').data('rate');
+			//console.log(song);
 			music.download(song, function(data){
+				console.log(data);
 				if (data.ret) {
 					data = data.data;
 					if (data.files[0].url && file.path) {
