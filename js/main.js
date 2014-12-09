@@ -75,7 +75,7 @@ $(function($) {
 
 	/* download */
 	$('#song-list').on("click", ".download", function() {
-		music.download($(this).data('song'), function(data){
+		music.download($(this).data('song'), 1, function(data){
 			if (data.ret) {
 				song = data.data;
 				$('#down img').attr('src', song.album_image_url);
@@ -116,7 +116,7 @@ $(function($) {
 			localStorage.path = file.path;
 			song.rate = $('input:radio[name="song"]:checked').data('rate');
 			//console.log(song);
-			music.download(song, function(data){
+			music.download(song, 1, function(data){
 				console.log(data);
 				if (data.ret) {
 					data = data.data;
